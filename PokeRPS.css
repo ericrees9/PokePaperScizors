@@ -11,7 +11,12 @@
 /* Normal CSS Styling */
 /* Left Pokemon Styling */
     #pokemonName1 {
+        text-transform: uppercase;
+    }
 
+    #leftPokemonPic {
+        height: 300px;
+        width: 300px;
     }
 
     #pokemonLevel1 {
@@ -21,12 +26,17 @@
 /* Center Column Styling */
 
     #centerText {
-        
+
     }
 
 /* Right Pokemon Styling */
     #pokemonName2 {
+        text-transform: uppercase;
+    }
 
+    #rightPokemonPic {
+        height: 300px;
+        width: 300px;
     }
 
     #pokemonLevel2 {

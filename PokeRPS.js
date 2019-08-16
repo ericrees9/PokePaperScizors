@@ -4,21 +4,23 @@ const waterTypeURL = baseURL + "type/water/" // *NOTE* if we want both arrays of
 const grassTypeURL = baseURL + "type/grass/"
 let url;
 
-/* 
-// FETCHING RESULTS FROM API
-fetch(baseURL)
-    .then(function(result) { 
-        return result.json(); 
-    }) 
-    .then(function(json){
-        displayResults(json); 
-        //console.log(json);
-    })
+/*
+// BATTLE BUTTON
+const battleButton = document.querySelector("battleButton");
+
+// REFRESH BUTTONS
+const leftRefresh = ;
+const rightRefresh = ;
+
+// EVENT LISTENERS FOR VARIOUS FUNCTIONS
+battleButton.addEventListener("click", fetchResults); 
+leftRefresh.addEventListener("click", nextPage);
+rightRefresh.addEventListener("click", previousPage);
 */
+
 
 // DISPLAYING THE POKEMON
 function displayResults(json) {
-
 // PICKING WHICH TYPE(1) - Randomly picking a number to decide which type to pull from
     typeArray1 = ["Fire", "Water", "Grass"];
     randomType1 = Math.floor(Math.random() * (+3 - +0)) + +0;
@@ -35,26 +37,49 @@ function displayResults(json) {
     
 // SETTING THE FIRST TYPE LIST AFTER RNG - With the first type chosen, now we have to set the type list for an array of viable Pokemon
     if(pokemonType1 == "Fire"){
-// FETCHING RESULTS FROM API
+// FETCHING TYPE LIST RESULTS FROM API
         fetch(fireTypeURL)
             .then(function(result) { 
                 return result.json(); 
             }) 
             .then(function(json){ 
-                console.log(json);
+                //console.log(json);
                 let leftPokemonList = json.pokemon;
                 randomLeftPokemon = leftPokemonList[Math.floor(Math.random() * leftPokemonList.length)];
-                console.log(randomLeftPokemon);
-                console.log(typeof randomLeftPokemon);
+                //console.log(randomLeftPokemon);
+                //console.log(typeof randomLeftPokemon);
                 randomLeftID = randomLeftPokemon.pokemon.url;
-                console.log(randomLeftID);
-                
-                //displayResults(json);
+                //console.log(randomLeftID);
+// DYNAMICALLY BUILDING URL FOR RNGPOKEMON REQUEST
+                apiURL = randomLeftID.slice(26);
+                //console.log(apiURL);
+                indLeftURL = baseURL + apiURL;
+                //console.log(indLeftURL);
+// FETCHING INDIVIDUAL RNGPOKEMON DATA FROM API
+                fetch(indLeftURL)
+                    .then(function(result){
+                        return result.json();
+                    })
+                    .then(function(json){
+                        console.log(json);
+// DISPLAYING LEFT POKEMON 
+                        let leftPokemonName = json.name;
+                        //console.log(leftPokemonName);
+                        let leftPokemonSprite = json.sprites["front_default"];
+                        //console.log(leftPokemonSprite);
+// ASSIGNING API DATA TO HTML ELEMENTS THROUGH DOM                        
+                        document.getElementById("leftPokemonPic").src = leftPokemonSprite;
+                        document.getElementById("pokemonName1").innerText = leftPokemonName;
+                        leftPokemonLevel = Math.floor(Math.random() * (+100 - +0)) + +0;
+                        document.getElementById("pokemonLevel1").innerText = "Level: " + leftPokemonLevel;
+                        
+
+                    })
             })
             .catch(err => {
                 console.log(err, "No Pokemon came out to play!")
-             })    
-    
+            })    
+
 
     } else if(pokemonType1 == "Water"){
 // FETCHING RESULTS FROM API
@@ -63,7 +88,7 @@ function displayResults(json) {
                 return result.json(); 
             }) 
             .then(function(json){
-                console.log(json);
+                //console.log(json);
                 let leftPokemonList = json.pokemon;
                 randomLeftPokemon = leftPokemonList[Math.floor(Math.random() * leftPokemonList.length)];
                 console.log(randomLeftPokemon);
@@ -72,11 +97,33 @@ function displayResults(json) {
                 console.log(randomLeftID);
                 //displayResults(json);
                 //console.log(json.pokemon[132]) - Trying to figure out a way to include both pages of the pokemon type array
+// DYNAMICALLY BUILDING URL FOR RNGPOKEMON REQUEST
+                apiURL = randomLeftID.slice(26);
+                //console.log(apiURL);
+                indLeftURL = baseURL + apiURL;
+                //console.log(indLeftURL);
+// FETCHING INDIVIDUAL RNGPOKEMON DATA FROM API
+                fetch(indLeftURL)
+                    .then(function(result){
+                        return result.json();
+                    })
+                    .then(function(json){
+                        console.log(json);
+// DISPLAYING LEFT POKEMON 
+                        let leftPokemonName = json.name;
+                        console.log(leftPokemonName);
+                        let leftPokemonSprite = json.sprites["front_default"];
+                        console.log(leftPokemonSprite);
+// ASSIGNING API DATA TO HTML ELEMENTS THROUGH DOM                        
+                        document.getElementById("leftPokemonPic").src = leftPokemonSprite;
+                        document.getElementById("pokemonName1").innerText = leftPokemonName;
+                        leftPokemonLevel = Math.floor(Math.random() * (+100 - +0)) + +0;
+                        document.getElementById("pokemonLevel1").innerText = "Level: " + leftPokemonLevel;
+                    })
             })
             .catch(err => {
                 console.log(err, "No Pokemon came out to play!")
             }) 
-
 
     } else if(pokemonType1 == "Grass"){
 // FETCHING RESULTS FROM API
@@ -85,14 +132,37 @@ function displayResults(json) {
                 return result.json(); 
             }) 
             .then(function(json){
-                console.log(json);
+                //console.log(json);
                 let leftPokemonList = json.pokemon;
                 randomLeftPokemon = leftPokemonList[Math.floor(Math.random() * leftPokemonList.length)];
                 console.log(randomLeftPokemon);
-                console.log(typeof randomLeftPokemon);
+                //console.log(typeof randomLeftPokemon);
                 randomLeftID = randomLeftPokemon.pokemon.url;
                 console.log(randomLeftID);
                 //displayResults(json);
+// DYNAMICALLY BUILDING URL FOR RNGPOKEMON REQUEST
+                apiURL = randomLeftID.slice(26);
+                //console.log(apiURL);
+                indLeftURL = baseURL + apiURL;
+                //console.log(indLeftURL);
+// FETCHING INDIVIDUAL RNGPOKEMON DATA FROM API
+                fetch(indLeftURL)
+                    .then(function(result){
+                        return result.json();
+                    })
+                    .then(function(json){
+                        console.log(json);
+// DISPLAYING LEFT POKEMON 
+                        let leftPokemonName = json.name;
+                        console.log(leftPokemonName);
+                        let leftPokemonSprite = json.sprites["front_default"];
+                        console.log(leftPokemonSprite);
+// ASSIGNING API DATA TO HTML ELEMENTS THROUGH DOM                        
+                        document.getElementById("leftPokemonPic").src = leftPokemonSprite;
+                        document.getElementById("pokemonName1").innerText = leftPokemonName;
+                        leftPokemonLevel = Math.floor(Math.random() * (+100 - +0)) + +0;
+                        document.getElementById("pokemonLevel1").innerText = "Level: " + leftPokemonLevel;
+                    })
             })
             .catch(err => {
                 console.log(err, "No Pokemon came out to play!")
@@ -108,36 +178,120 @@ function displayResults(json) {
                     return result.json(); 
                 }) 
                 .then(function(json){
-                    //displayResults(json); 
-                    console.log(json);
-                })
+                    //console.log(json);
+                    let rightPokemonList = json.pokemon;
+                    randomRightPokemon = rightPokemonList[Math.floor(Math.random() * rightPokemonList.length)];
+                    console.log(randomRightPokemon);
+                    //console.log(typeof randomRightPokemon);
+                    randomRightID = randomRightPokemon.pokemon.url;
+                    console.log(randomRightID);
+// DYNAMICALLY BUILDING URL FOR RNGPOKEMON REQUEST
+                    apiURL = randomRightID.slice(26);
+                    //console.log(apiURL);
+                    indRightURL = baseURL + apiURL;
+                    //console.log(indLeftURL);
+// FETCHING INDIVIDUAL RNGPOKEMON DATA FROM API
+                    fetch(indRightURL)
+                        .then(function(result){
+                            return result.json();
+                        })
+                        .then(function(json){
+                            console.log(json);
+// DISPLAYING RIGHT POKEMON 
+                            let rightPokemonName = json.name;
+                            console.log(rightPokemonName);
+                            let rightPokemonSprite = json.sprites["front_default"];
+                            console.log(rightPokemonSprite);    
+// ASSIGNING API DATA TO HTML ELEMENTS THROUGH DOM                        
+                            document.getElementById("rightPokemonPic").src = rightPokemonSprite;
+                            document.getElementById("pokemonName2").innerText = rightPokemonName;
+                            rightPokemonLevel = Math.floor(Math.random() * (+100 - +0)) + +0;
+                            document.getElementById("pokemonLevel2").innerText = "Level: " + rightPokemonLevel;           
+                        })
                 .catch(err => {
                     console.log(err, "No Pokemon came out to play!")
                  })    
     
-        } else if(pokemonType2 == "Water"){
-    // FETCHING RESULTS FROM API
+        }) 
+    } else if(pokemonType2 == "Water"){
+// FETCHING RESULTS FROM API
             fetch(waterTypeURL)
                 .then(function(result) { 
                     return result.json(); 
                 }) 
                 .then(function(json){
-                    //displayResults(json); 
-                    console.log(json);
+                    //console.log(json);
+                    let rightPokemonList = json.pokemon;
+                    randomRightPokemon = rightPokemonList[Math.floor(Math.random() * rightPokemonList.length)];
+                    console.log(randomRightPokemon);
+                    //console.log(typeof randomRightPokemon);
+                    randomRightID = randomRightPokemon.pokemon.url;
+                    console.log(randomRightID);
+// DYNAMICALLY BUILDING URL FOR RNGPOKEMON REQUEST
+                    apiURL = randomRightID.slice(26);
+                    //console.log(apiURL);
+                    indRightURL = baseURL + apiURL;
+                    //console.log(indLeftURL);
+// FETCHING INDIVIDUAL RNGPOKEMON DATA FROM API
+                    fetch(indRightURL)
+                        .then(function(result){
+                            return result.json();
+                        })
+                        .then(function(json){
+                            console.log(json);
+// DISPLAYING RIGHT POKEMON 
+                            let rightPokemonName = json.name;
+                            console.log(rightPokemonName);
+                            let rightPokemonSprite = json.sprites["front_default"];
+                            console.log(rightPokemonSprite);   
+// ASSIGNING API DATA TO HTML ELEMENTS THROUGH DOM                        
+                            document.getElementById("rightPokemonPic").src = rightPokemonSprite;
+                            document.getElementById("pokemonName2").innerText = rightPokemonName;
+                            rightPokemonLevel = Math.floor(Math.random() * (+100 - +0)) + +0;
+                            document.getElementById("pokemonLevel2").innerText = "Level: " + rightPokemonLevel;                 
+                        })
                 })
                 .catch(err => {
                     console.log(err, "No Pokemon came out to play!")
                 })         
     
         } else if(pokemonType2 == "Grass"){
-    // FETCHING RESULTS FROM API
+// FETCHING RESULTS FROM API
             fetch(grassTypeURL)
                 .then(function(result) { 
                     return result.json(); 
                 }) 
                 .then(function(json){
-                    //displayResults(json); 
-                    console.log(json);
+                    //console.log(json);
+                    let rightPokemonList = json.pokemon;
+                    randomRightPokemon = rightPokemonList[Math.floor(Math.random() * rightPokemonList.length)];
+                    console.log(randomRightPokemon);
+                    //console.log(typeof randomRightPokemon);
+                    randomRightID = randomRightPokemon.pokemon.url;
+                    console.log(randomRightID);
+// DYNAMICALLY BUILDING URL FOR RNGPOKEMON REQUEST
+                    apiURL = randomRightID.slice(26);
+                    //console.log(apiURL);
+                    indRightURL = baseURL + apiURL;
+                    //console.log(indLeftURL);
+// FETCHING INDIVIDUAL RNGPOKEMON DATA FROM API
+                    fetch(indRightURL)
+                        .then(function(result){
+                            return result.json();
+                        })
+                        .then(function(json){
+                            console.log(json);
+// DISPLAYING RIGHT POKEMON 
+                            let rightPokemonName = json.name;
+                            console.log(rightPokemonName);
+                            let rightPokemonSprite = json.sprites["front_default"];
+                            console.log(rightPokemonSprite); 
+// ASSIGNING API DATA TO HTML ELEMENTS THROUGH DOM                        
+                            document.getElementById("rightPokemonPic").src = rightPokemonSprite;
+                            document.getElementById("pokemonName2").innerText = rightPokemonName;
+                            rightPokemonLevel = Math.floor(Math.random() * (+100 - +0)) + +0;
+                            document.getElementById("pokemonLevel2").innerText = "Level: " + rightPokemonLevel;                   
+                        })
                 })
                 .catch(err => {
                     console.log(err, "No Pokemon came out to play!")
@@ -149,3 +303,11 @@ function displayResults(json) {
 }
 
 displayResults();
+
+/*
+// BATTLE FUNCTION TIED TO THE BUTTON
+
+function pokemonBattle() {
+
+}
+*/
