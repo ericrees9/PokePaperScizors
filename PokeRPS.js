@@ -67,8 +67,8 @@ function displayResults(pokemonType1, pokemonType2) {
                         //console.log(leftPokemonName);
                         let leftPokemonSprite = json.sprites["front_default"];
                         //console.log(leftPokemonSprite);
-                        let leftPokemonTypeReturn = json.types[0]["type"]["name"];
-                        console.log(leftPokemonTypeReturn);
+                        //let leftPokemonTypeReturn = json.types[0]["type"]["name"];
+                        //console.log(leftPokemonTypeReturn);
 // ASSIGNING API DATA TO HTML ELEMENTS THROUGH DOM                        
                         document.getElementById("leftPokemonPic").src = leftPokemonSprite;
                         document.getElementById("pokemonName1").innerText = leftPokemonName;

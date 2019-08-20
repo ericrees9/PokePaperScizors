@@ -9,35 +9,44 @@
     <title>Pokémon Rock/Paper/Scissors</title>
 </head>
 <body>
-    <nav class="navbar fixed-top navbar-light bg-light justify-content-center">
+    <nav class="navbar sticky-top navbar-light bg-light justify-content-center" style="font-size: .3em">
         <a class="navbar-brand" href="#">
-            <img src="./assets/pokemon_logo1.png" width="120" height="50" alt="">
+            <img src="./assets/pokemon_logo1.png" width="175" height="75" alt="">
+            Rock/Paper/Scissors
         </a>
     </nav>
 
     <div class="container" id="mainContainer">
         <div class="row">
             <div class="col-5 text-center">
+                <p class="playerNumber" style="text-align: center">Trainer No. 1</p>
                 <p id="pokemonName1" style="text-align: center"></p>
-                <img id="leftPokemonPic" src="" class="img-fluid" alt="">
+                <p id="pokemonType1" style="text-align: center"></p>
+                <img id="leftPokemonPic" id="bounce" src="" class="img-fluid" alt="">
                 <p id="pokemonLevel1" style="text-align: center">Level: 88</p>
+                <p id="leftMove" style="text-align: center"></p>
             </div>
-            <div class="col-2 justify-content-center" id="centerColumn">
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <button id="battleButton" type="button" class="btn btn-secondary btn-lg">BATTLE!</button>
-            </div>
+                <div class="col-2 justify-content-center" id="centerColumn">
+                <p class="centerText" style="text-align: center">Think you're the very best, like no one ever was?</p>
+                <p class="centerText" style="text-align: center">Prove it! Choose Trainer 1 or Trainer 2 and battle!</p>
+                <button id="battleButton" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">BATTLE!</button>
+                <dialog id="myDialog">
+                        <p id="dialogBox"></p>
+                        <button type="button" id="againButton" button value="Refresh Page" onClick="window.location.reload();">Again?</button>
+                </dialog>
+                </div>
             <div class="col-5 text-center">
+                <p class="playerNumber" style="text-align: center">Trainer No. 2</p>
                 <p id="pokemonName2" style="text-align: center"></p>
+                <p id="pokemonType2" style="text-align: center"></p>
                 <img id="rightPokemonPic" src="" class="img-fluid" alt="">
                 <p id="pokemonLevel2" style="text-align: center">Level: 82</p>
+                <p id="rightMove" style="text-align: center"></p>
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="PokeRPS.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="PokeRPSTest.js"></script>
 </body>
 </html>

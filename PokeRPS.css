@@ -1,44 +1,156 @@
-/* Bootstrap Styling */
+@font-face {
+	font-family: "Pokemon GB";
+	src: url("Pokemon_GB.ttf") format("truetype");
+	font-weight: normal;
+    font-style: normal;
+}
 
+body {
+    background-color: #a29b7f;
+}
+
+/* Bootstrap Styling */
     #centerColumn {
         text-align: center;
+        margin-top: -2em
     }
 
     #mainContainer {
-        margin-top: 10em;
+        margin-top: 6em;
+    }
+
+    .navbar {
+        font-family: "Pokemon GB";
+        font-size: 50px;
     }
 
 /* Normal CSS Styling */
+
+.playerNumber {
+    font-family: "Pokemon GB";
+    margin-bottom: .3em;
+    font-size: .5em;
+}
+
 /* Left Pokemon Styling */
     #pokemonName1 {
+        font-family: "Pokemon GB";
         text-transform: uppercase;
+        font-size: 1.95em; 
+    }
+
+    #pokemonType1 {
+        margin-top: -1.3em;
+        font-family: "Pokemon GB";
     }
 
     #leftPokemonPic {
-        height: 300px;
-        width: 300px;
+        height: 215px;
+        width: 215px;
+        animation-duration: 2s;
+        animation-timing-function: ease;
+        animation-iteration-count: infinite;
+        transform-origin: bottom;
     }
 
     #pokemonLevel1 {
+        font-family: "Pokemon GB";
+        font-size: 1.18em;
+    }
 
+    #leftMove {
+        font-family: "Pokemon GB";
+        text-transform: capitalize;
+        font-size: .8em;
+        margin-top: -.8em;
+        visibility: hidden;
     }
 
 /* Center Column Styling */
 
-    #centerText {
+    .centerText {
+        font-family: "Pokemon GB";
+        font-size: .8em;
+    }
 
+    #battleButton {
+        position: relative;
+        margin-top: 2em;
+        font-family: "Pokemon GB";
+        padding-bottom: .2em;
+        padding-top: .47em;
     }
 
 /* Right Pokemon Styling */
     #pokemonName2 {
+        font-family: "Pokemon GB";
         text-transform: uppercase;
+        font-size: 1.95em;
+    }
+
+    #pokemonType2 {
+        margin-top: -1.3em;
+        font-family: "Pokemon GB";
     }
 
     #rightPokemonPic {
-        height: 300px;
-        width: 300px;
+        height: 215px;
+        width: 215px;
+        animation-duration: 2s;
+        animation-timing-function: ease;
+        animation-iteration-count: infinite;
+        transform-origin: top;
     }
 
     #pokemonLevel2 {
+        font-family: "Pokemon GB";
+        font-size: 1.18em;
+    }
 
+    #rightMove {
+        font-family: "Pokemon GB";
+        text-transform: capitalize;
+        font-size: .8em;
+        margin-top: -.8em;
+        visibility: hidden;
+    }
+
+    /* Dialog Box Styling */
+    #myDialog {
+        height: 25vw;
+        width: 30vw;
+        font-family: "Pokemon GB";
+        padding-top: 2em;
+        border: .8em solid black;
+        background-color: #b5b5b5;
+    }
+
+    #againButton {
+        background-color: #16a2b8;
+        color: #feffff;
+        font-family: "Pokemon GB";
+        padding-top: .75em;
+        padding-botto: .75em;
+        width: 15vw;
+    }
+
+    /* Animation? */
+    @keyframes bounce{
+        0%   { transform: scale(1,1)      translateY(0); }
+        10%  { transform: scale(1.1,.9)   translateY(0); }
+        30%  { transform: scale(.9,1.1)   translateY(-100px); }
+        50%  { transform: scale(1.05,.95) translateY(0); }
+        57%  { transform: scale(1,1)      translateY(-7px); }
+        64%  { transform: scale(1,1)      translateY(0); }
+        100% { transform: scale(1,1)      translateY(0); }
+    }
+
+    @keyframes squish{
+        0%   { transform: scale(1,1)      translateY(0); }
+        10%  { transform: scale(1.2,.9)   translateY(-2px); }
+        30%  { transform: scale(1.4,.7)   translateY(0); }
+        50%  { transform: scale(1.5,.5)    translateY(0); }
+        57%  { transform: scale(1.3,.7)      translateY(-8px); }
+        64%  { transform: scale(1.1,.9)      translateY(0); }
+        100% { transform: scale(1,1)      translateY(0); }
     }
