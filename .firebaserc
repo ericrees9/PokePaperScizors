@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "pokemon-rockpaperscissors"
+    "default": "pokemon-rockpaperscissors",
+    "Pokemon RockPaperScissors": "pokemon-rockpaperscissors"
   }
 }

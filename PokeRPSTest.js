@@ -2,8 +2,8 @@ const baseURL = "https://pokeapi.co/api/v2/"
 const fireTypeURL = baseURL + "type/fire/"
 const waterTypeURL = baseURL + "type/water/" // *NOTE* if we want both arrays of water/grass pokemon we can assign another random number after it has been assigned a type, then build the URL based on if that URL is greater than 100, pointing us in the direction of the second array
 const grassTypeURL = baseURL + "type/grass/"
-let imgFallBack1 = document.getElementById("leftPokemonPic");
-let imgFallBack2 = document.getElementById("rightPokemonPic");
+const imgAssign1 = document.getElementById("leftPokemonPic");
+const imgAssign2 = document.getElementById("rightPokemonPic");
 let nameArr = [];
 //let leftName = nameArr[0];
 //let rightName = nameArr[1];
@@ -274,11 +274,12 @@ function fireLeftInd(fireInd1) {
         let moveLeftFinal = moveLeft.move.name;
         //console.log(moveLeftFinal);
 // ASSIGNING API DATA TO HTML ELEMENTS THROUGH DOM                        
-        document.getElementById("leftPokemonPic").src = leftPokemonSprite;
+        //document.getElementById("leftPokemonPic").src = leftPokemonSprite;
         document.getElementById("pokemonName1").innerText = leftPokemonName;
         document.getElementById("pokemonType1").innerText = "Fire Type";
         document.getElementById("leftMove").innerText = leftPokemonName + " used " + moveLeftFinal + "!";
         nameArr.unshift(leftPokemonName);
+        missingNo1(leftPokemonSprite);
     });
 }
 
@@ -295,10 +296,6 @@ function waterLeftInd(waterInd1) {
         let leftPokemonName = json.name;
         //console.log(leftPokemonName);
         let leftPokemonSprite = json.sprites["front_default"];
-        //console.log(leftPokemonSprite);
-        imgFallBack1.addEventListener("error", missingNo());
-        imgFallBack2.addEventListener("error", missingNo());
-        //let leftPokemonTypeReturn = json.types[0]["type"]["name"];
         //console.log(leftPokemonTypeReturn);
         let leftMoveList = json.moves;
         moveLeft = leftMoveList[Math.floor(Math.random() * leftMoveList.length)];
@@ -306,11 +303,12 @@ function waterLeftInd(waterInd1) {
         let moveLeftFinal = moveLeft.move.name;
         //console.log(moveLeftFinal);
 // ASSIGNING API DATA TO HTML ELEMENTS THROUGH DOM                        
-        document.getElementById("leftPokemonPic").src = leftPokemonSprite;
+        //document.getElementById("leftPokemonPic").src = leftPokemonSprite;
         document.getElementById("pokemonName1").innerText = leftPokemonName;
         document.getElementById("pokemonType1").innerText = "Water Type";
         document.getElementById("leftMove").innerText = leftPokemonName + " used " + moveLeftFinal + "!";
         nameArr.unshift(leftPokemonName);
+        missingNo1(leftPokemonSprite);
     });
 }
 
@@ -337,11 +335,12 @@ function grassLeftInd(grassInd1) {
         let moveLeftFinal = moveLeft.move.name;
         //console.log(moveLeftFinal);
 // ASSIGNING API DATA TO HTML ELEMENTS THROUGH DOM                        
-        document.getElementById("leftPokemonPic").src = leftPokemonSprite;
+        //document.getElementById("leftPokemonPic").src = leftPokemonSprite;
         document.getElementById("pokemonName1").innerText = leftPokemonName;
         document.getElementById("pokemonType1").innerText = "Grass Type";
         document.getElementById("leftMove").innerText = leftPokemonName + " used " + moveLeftFinal + "!";
         nameArr.unshift(leftPokemonName);
+        missingNo1(leftPokemonSprite);
     });
 };
 
@@ -371,11 +370,12 @@ function fireRightInd(fireInd2) {
         let moveRightFinal = moveRight.move.name;
         //console.log(moveRightFinal);
 // ASSIGNING API DATA TO HTML ELEMENTS THROUGH DOM                        
-        document.getElementById("rightPokemonPic").src = rightPokemonSprite;
+        //document.getElementById("rightPokemonPic").src = rightPokemonSprite;
         document.getElementById("pokemonName2").innerText = rightPokemonName;
         document.getElementById("pokemonType2").innerText = "Fire Type";
         document.getElementById("rightMove").innerText = rightPokemonName + " used " + moveRightFinal + "!";
         nameArr.push(rightPokemonName);
+        missingNo2(rightPokemonSprite);
     });
 };
 
@@ -401,11 +401,12 @@ function waterRightInd(waterInd2) {
         let moveRightFinal = moveRight.move.name;
         //console.log(moveRightFinal);
 // ASSIGNING API DATA TO HTML ELEMENTS THROUGH DOM                        
-        document.getElementById("rightPokemonPic").src = rightPokemonSprite;
+        //document.getElementById("rightPokemonPic").src = rightPokemonSprite;
         document.getElementById("pokemonName2").innerText = rightPokemonName;
         document.getElementById("pokemonType2").innerText = "Water Type";
         document.getElementById("rightMove").innerText = rightPokemonName + " used " + moveRightFinal + "!";
         nameArr.push(rightPokemonName);
+        missingNo2(rightPokemonSprite);
     });
 };
 
@@ -430,13 +431,42 @@ function grassRightInd(grassInd2) {
         //console.log(moveRight);
         let moveRightFinal = moveRight.move.name;
         //console.log(moveRightFinal);
-// ASSIGNING API DATA TO HTML ELEMENTS THROUGH DOM                        
-        document.getElementById("rightPokemonPic").src = rightPokemonSprite;
+// ASSIGNING API DATA TO HTML ELEMENTS THROUGH DOM                                
+        //document.getElementById("rightPokemonPic").src = rightPokemonSprite;
         document.getElementById("pokemonName2").innerText = rightPokemonName;
         document.getElementById("pokemonType2").innerText = "Grass Type";
         document.getElementById("rightMove").innerText = rightPokemonName + " used " + moveRightFinal + "!";
         nameArr.push(rightPokemonName);
+        missingNo2(rightPokemonSprite);
     });
+};
+
+//////////////////////////////////////////////////////
+///////// missingNo Fallback Image Function //////////
+//////////////////////////////////////////////////////
+
+function missingNo1(leftPokemonSprite){
+    if(leftPokemonSprite == null){
+        document.getElementById("leftPokemonPic").src = "https://i.imgur.com/EpLy7sR.png";
+        document.getElementById("pokemonName1").innerText = "MISSINGNO.";
+        document.getElementById("leftPokemonPic").style.WebkitFilter = "30px";
+        document.getElementById("pokemonType1").innerText = "?????????";
+        document.getElementById("leftPokemonPic").style.marginBottom = "1.2em";
+    } else {
+        document.getElementById("leftPokemonPic").src = leftPokemonSprite;
+    }
+};
+
+function missingNo2(rightPokemonSprite){
+    if(rightPokemonSprite == null){
+        document.getElementById("rightPokemonPic").src = "https://i.imgur.com/EpLy7sR.png";
+        document.getElementById("pokemonName2").innerText = "MISSINGNO.";
+        document.getElementById("rightPokemonPic").style.WebkitFilter = "30px";
+        document.getElementById("pokemonType2").innerText = "?????????";
+        document.getElementById("leftPokemonPic").style.marginBottom = "1.2em";
+    } else {
+        document.getElementById("rightPokemonPic").src = rightPokemonSprite;
+    }
 };
 
 //////////////////////////////////////////////////////
@@ -444,11 +474,11 @@ function grassRightInd(grassInd2) {
 //////////////////////////////////////////////////////
 
 // LEFT
-leftPokemonLevel = Math.floor(Math.random() * (+100 - +0)) + +0;
+leftPokemonLevel = Math.floor(Math.random() * (+100 - +1)) + +1;
 document.getElementById("pokemonLevel1").innerText = "Level: " + leftPokemonLevel;
 
 // RIGHT
-rightPokemonLevel = Math.floor(Math.random() * (+100 - +0)) + +0;
+rightPokemonLevel = Math.floor(Math.random() * (+100 - +1)) + +1;
 document.getElementById("pokemonLevel2").innerText = "Level: " + rightPokemonLevel; 
 
 
@@ -458,6 +488,46 @@ document.getElementById("pokemonLevel2").innerText = "Level: " + rightPokemonLev
 
 //console.log(pokemonType1);
 //console.log(pokemonType2);
+
+//////////////////////////////////////////////////////
+//////////////// ~* TOP SECRET *~ ////////////////////
+//////////////////////////////////////////////////////
+
+function activateCheats() {
+    let audio = new Audio("http://23.237.126.42/ost/pokemon-gameboy-sound-collection/vvdpydwp/101-opening.mp3");
+    audio.play();
+
+    alert("Cheat code activated");
+}
+
+let allowedKeys = {
+    37: "left",
+    38: "up",
+    39: "right",
+    40: "down",
+    65: "a",
+    66: "b",
+}
+
+let kCode = ["up", "up", "down", "down", "left", "right", "left", "right", "b", "a"];
+
+let kCodePosition = 0;
+
+document.addEventListener("keydown", function (e) {
+
+let key = allowedKeys[e.keyCode];
+let requiredKey = kCode[kCodePosition];
+
+if(key == requiredKey){
+    kCodePosition++;
+    if(kCodePosition==kCode.length){
+        activateCheats();
+        kCodePosition = 0;
+    }
+    } else {
+        kCodePosition = 0
+    }
+});
 
 //////////////////////////////////////////////////////
 /////////////// ~* BATTLE BUTTON *~ //////////////////
